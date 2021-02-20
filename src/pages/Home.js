@@ -1,11 +1,10 @@
 import React from "react";
-import { Button, Typography } from "antd";
+import { Button, Typography, Row, Col } from "antd";
 import { LoginOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 
 import banner from "../assets/banner.png";
-
-const { Title, Paragraph, Text } = Typography;
+import landingImage from "../assets/landingImage.png";
 
 const Home = () => {
   return (
@@ -18,6 +17,18 @@ const Home = () => {
               <strong> Iniciar Sesión</strong>
             </Button>
           </span>
+        </div>
+        <div className="body">
+          <Row>
+            <Col>
+              <center>
+                <img src={landingImage} className="imageLanding" />
+              </center>
+            </Col>
+            <Col>
+              <img src={landingImage} className="imageLanding" />
+            </Col>
+          </Row>
         </div>
         <div>
           Lorem Ipsum is simply dummy text of the printing and typesetting

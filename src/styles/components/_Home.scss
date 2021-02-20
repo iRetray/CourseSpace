@@ -1,0 +1,34 @@
+@import "./Variables";
+
+.homePage {
+  .header {
+    display: flex;
+    padding-top: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 20px;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    h1.ant-typography {
+      margin-bottom: 0px;
+    }
+    .buttonLogin {
+      margin-left: auto;
+    }
+    .iconImage {
+      width: 300px;
+    }
+    .secondaryText {
+      padding-left: 20px;
+    }
+  }
+  @media (max-width: $breakpoint-tablet) {
+    .header {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}

@@ -2,6 +2,9 @@
 
 .homePage {
   .header {
+    -webkit-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.34);
+    -moz-box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.34);
     display: flex;
     padding-top: 20px;
     padding-left: 80px;
@@ -32,12 +35,58 @@
       padding-right: 20px;
     }
   }
+  @media (max-width: 530px) {
+    .header {
+      display: block;
+      text-align: -webkit-center;
+    }
+    .iconImage {
+      margin-bottom: 10px;
+    }
+    .ant-card-body {
+      padding: 10px;
+    }
+  }
   .body {
     padding: 40px;
     .imageLanding {
       width: 100%;
       padding-left: 5%;
       max-width: 600px;
+    }
+    .cardHome {
+      max-width: 500px;
+      .spaceCard {
+        margin-left: 10px;
+        max-width: 180px;
+        height: 200px;
+        .iconFeature {
+          transition-duration: 500ms;
+          margin-top: 20px;
+          font-size: 60px;
+        }
+        .textFeature {
+          margin-top: 15px;
+          font-size: 12px;
+          display: inline-block;
+        }
+      }
+      .spaceCard:hover {
+        .iconFeature {
+          transition-duration: 500ms;
+          margin-top: 0px;
+          font-size: 90px;
+        }
+      }
+      @media (max-width: 530px) {
+        .spaceCard:hover {
+          .iconFeature {
+            transition-duration: 500ms;
+            margin-top: 20px;
+            font-size: 60px;
+          }
+        }
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Typography, Row, Col } from "antd";
-import { LoginOutlined } from "@ant-design/icons";
+import { Button, Row, Col, Card } from "antd";
+import { LoginOutlined, UserAddOutlined } from "@ant-design/icons";
 import { Fragment } from "react";
 
 import banner from "../assets/banner.png";
@@ -11,7 +11,7 @@ const Home = () => {
     <Fragment>
       <div className="homePage">
         <div className="header">
-          <img src={banner} className="iconImage" />
+          <img src={banner} className="iconImage" alt="" />
           <span className="buttonLogin">
             <Button type="primary" icon={<LoginOutlined />}>
               <strong> Iniciar Sesión</strong>
@@ -19,14 +19,23 @@ const Home = () => {
           </span>
         </div>
         <div className="body">
-          <Row>
+          <Row align="middle" justify="space-around">
             <Col>
               <center>
-                <img src={landingImage} className="imageLanding" />
+                <img src={landingImage} className="imageLanding" alt="" />
               </center>
             </Col>
             <Col>
-              <img src={landingImage} className="imageLanding" />
+              <Card hoverable>
+                <Button
+                  type="primary"
+                  size="large"
+                  shape="round"
+                  icon={<UserAddOutlined />}
+                >
+                  <strong> Registrarme</strong>
+                </Button>
+              </Card>
             </Col>
           </Row>
         </div>

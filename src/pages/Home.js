@@ -1,11 +1,16 @@
 import React, { Fragment, useState } from "react";
-import { Button, Row, Col, Card } from "antd";
+import { Button, Row, Col, Card, Modal, Steps, Select, Space } from "antd";
 import {
   LoginOutlined,
   UserAddOutlined,
   DashboardTwoTone,
   CompassTwoTone,
   SmileTwoTone,
+  HomeOutlined,
+  IdcardOutlined,
+  SaveOutlined,
+  LoadingOutlined,
+  SmileOutlined,
 } from "@ant-design/icons";
 import { Typography, Divider } from "antd";
 
@@ -13,9 +18,12 @@ import banner from "../assets/banner.png";
 import landingImage from "../assets/landingImage.png";
 
 const { Title, Paragraph, Text } = Typography;
+const { Step } = Steps;
+const { Option } = Select;
 
 const Home = () => {
   const [information, setInformation] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <Fragment>
@@ -29,7 +37,7 @@ const Home = () => {
           </span>
         </div>
         <div className="body">
-          <Row align="middle" justify="space-around">
+          <Row justify="space-around">
             <Col>
               <center>
                 <img src={landingImage} className="imageLanding" alt="" />
@@ -96,8 +104,7 @@ const Home = () => {
                     <Text>
                       {information && information === "NAVIGATION" ? (
                         <div>
-                          La aplicación ha sido diseñada totalmente para que los
-                          usuarios puedan{" "}
+                          Diseñada totalmente para que los usuarios puedan{" "}
                           <strong>desplazarse de forma autogestionada</strong> y
                           para brindar indicaciones que{" "}
                           <strong>orienten mejor</strong> a los usuarios dentro
@@ -134,6 +141,9 @@ const Home = () => {
                     size="large"
                     shape="round"
                     icon={<UserAddOutlined />}
+                    onClick={() => {
+                      setIsModalVisible(true);
+                    }}
                   >
                     <strong> Registrarme</strong>
                   </Button>
@@ -143,6 +153,35 @@ const Home = () => {
           </Row>
         </div>
       </div>
+      <Modal
+        title="Registro de usuario en CourseSpace"
+        visible={isModalVisible}
+        onOk={() => {}}
+        onCancel={() => {
+          setIsModalVisible(false);
+        }}
+      >
+        <Space direction="vertical">
+          <strong>Selecciona tu entidad</strong>
+          <Select
+            defaultValue="uean"
+            style={{ width: 120 }}
+            onChange={() => {}}
+          >
+            <Option value="uean">Universidad EAN</Option>
+            <Option value="school">Colegio</Option>
+            <Option value="disabled">Disabled</Option>
+            <Option value="Yiminghe">yiminghe</Option>
+          </Select>
+        </Space>
+
+        <Steps>
+          <Step status="finish" title="Entidad" icon={<HomeOutlined />} />
+          <Step status="finish" title="Información" icon={<IdcardOutlined />} />
+          <Step status="process" title="Pay" icon={<LoadingOutlined />} />
+          <Step status="wait" title="Finalizar" icon={<SaveOutlined />} />
+        </Steps>
+      </Modal>
     </Fragment>
   );
 };

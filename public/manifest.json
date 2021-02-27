@@ -15,20 +15,20 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/images/icons-144.png",
+      "src": "/images/icons-128.png",
       "type": "image/png",
-      "sizes": "144x144",
+      "sizes": "128x128",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/icons-92.png",
+      "src": "/images/icons-96.png",
       "type": "image/png",
-      "sizes": "92X92",
+      "sizes": "96X96",
       "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#40A9FF",
-  "background_color": "#40A9FF"
+  "background_color": "#FFFFFF"
 }

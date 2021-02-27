@@ -15,11 +15,13 @@ import {
 import { Typography, Divider } from "antd";
 
 import banner from "../assets/banner.png";
-import landingImage from "../assets/landingImage.png";
 
 const { Title, Paragraph, Text } = Typography;
 const { Step } = Steps;
 const { Option } = Select;
+
+const landingImage =
+  "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/landingImage.png?alt=media&token=ce07560b-b124-4275-a076-4fbfed1c0472";
 
 const Home = () => {
   const [information, setInformation] = useState(null);

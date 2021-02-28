@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./styles/styles.scss";
 import "antd/dist/antd.css";
 
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 const CourseSpace = () => {
   return (

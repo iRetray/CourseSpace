@@ -1,31 +1,28 @@
 import React, { Fragment, useState } from "react";
-import { Button, Row, Col, Card, Modal, Steps, Select, Space } from "antd";
+import { Button, Row, Col, Card } from "antd";
 import {
   LoginOutlined,
   UserAddOutlined,
   DashboardTwoTone,
   CompassTwoTone,
   SmileTwoTone,
-  HomeOutlined,
-  IdcardOutlined,
-  SaveOutlined,
-  LoadingOutlined,
-  SmileOutlined,
 } from "@ant-design/icons";
 import { Typography, Divider } from "antd";
 
-import banner from "../assets/banner.png";
+import Register from "./Register";
+import Login from "./Login";
+
+import banner from "../../assets/banner.png";
 
 const { Title, Paragraph, Text } = Typography;
-const { Step } = Steps;
-const { Option } = Select;
 
 const landingImage =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/landingImage.png?alt=media&token=ce07560b-b124-4275-a076-4fbfed1c0472";
 
 const Home = () => {
   const [information, setInformation] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false);
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
 
   return (
     <Fragment>
@@ -144,7 +141,7 @@ const Home = () => {
                     shape="round"
                     icon={<UserAddOutlined />}
                     onClick={() => {
-                      setIsModalVisible(true);
+                      setIsRegisterModalVisible(true);
                     }}
                   >
                     <strong> Registrarme</strong>
@@ -155,35 +152,11 @@ const Home = () => {
           </Row>
         </div>
       </div>
-      <Modal
-        title="Registro de usuario en CourseSpace"
-        visible={isModalVisible}
-        onOk={() => {}}
-        onCancel={() => {
-          setIsModalVisible(false);
-        }}
-      >
-        <Space direction="vertical">
-          <strong>Selecciona tu entidad</strong>
-          <Select
-            defaultValue="uean"
-            style={{ width: 120 }}
-            onChange={() => {}}
-          >
-            <Option value="uean">Universidad EAN</Option>
-            <Option value="school">Colegio</Option>
-            <Option value="disabled">Disabled</Option>
-            <Option value="Yiminghe">yiminghe</Option>
-          </Select>
-        </Space>
-
-        <Steps>
-          <Step status="finish" title="Entidad" icon={<HomeOutlined />} />
-          <Step status="finish" title="Información" icon={<IdcardOutlined />} />
-          <Step status="process" title="Pay" icon={<LoadingOutlined />} />
-          <Step status="wait" title="Finalizar" icon={<SaveOutlined />} />
-        </Steps>
-      </Modal>
+      <Register
+        isModalVisible={isRegisterModalVisible}
+        setIsModalVisible={setIsRegisterModalVisible}
+      />
+      <Login />
     </Fragment>
   );
 };

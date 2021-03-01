@@ -28,14 +28,18 @@ class AuthService {
   }
 
   logUser(user, password) {
+    console.log({ user });
+    console.log({ password });
     const storageList = localStorage.getItem("registeredUsers");
     if (storageList) {
       const parsedItem = JSON.parse(storageList);
+      console.log(parsedItem);
       const matchUser = parsedItem.filter(
         (item) => item.user === user && item.password === password
       );
-      if (matchUser && matchUser.name) {
-        localStorage.setItem("loggedUser", JSON.stringify(matchUser));
+      console.log(parsedItem);
+      if (matchUser[0] && matchUser[0].name) {
+        localStorage.setItem("loggedUser", JSON.stringify(matchUser[0]));
         return "LOGGED";
       }
     }

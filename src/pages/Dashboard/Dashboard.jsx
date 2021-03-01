@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 
 import AuthService from "../../services/AuthService";
+
+const { Title } = Typography;
 
 const Dashboard = () => {
   const history = useHistory();
@@ -11,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const userLogged = AuthService.getLoggedUser();
     if (userLogged) {
-      setUser(JSON.parse(userLogged)[0]);
+      setUser(JSON.parse(userLogged));
     }
   }, []);
 
@@ -23,8 +25,8 @@ const Dashboard = () => {
   return (
     <Fragment>
       <div className="dashboardContainer">
-        Bienvenido, {user ? user.name : null}
         <div className="closeSessionButton">
+          <Title level={3}>Bienvenido, {user ? user.name : null}</Title>
           <Button block danger onClick={() => closeSession()}>
             Cerrar Sesión
           </Button>

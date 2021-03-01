@@ -1,31 +1,38 @@
-import React, { Fragment, useState } from "react";
-import { Button, Row, Col, Card, Modal, Steps, Select, Space } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Button, Row, Col, Card } from "antd";
 import {
   LoginOutlined,
   UserAddOutlined,
   DashboardTwoTone,
   CompassTwoTone,
   SmileTwoTone,
-  HomeOutlined,
-  IdcardOutlined,
-  SaveOutlined,
-  LoadingOutlined,
-  SmileOutlined,
 } from "@ant-design/icons";
 import { Typography, Divider } from "antd";
 
-import banner from "../assets/banner.png";
+import Register from "./Register";
+import Login from "./Login";
+import AuthService from "../../services/AuthService";
 
 const { Title, Paragraph, Text } = Typography;
-const { Step } = Steps;
-const { Option } = Select;
 
+const banner =
+  "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/bannerHeader.png?alt=media&token=7a5e4773-5122-4079-842d-32932ae71de1";
 const landingImage =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/landingImage.png?alt=media&token=ce07560b-b124-4275-a076-4fbfed1c0472";
 
 const Home = () => {
+  const history = useHistory();
   const [information, setInformation] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false);
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
+
+  useEffect(() => {
+    const userLogged = AuthService.getLoggedUser();
+    if (userLogged) {
+      history.push("/dashboard");
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -33,7 +40,13 @@ const Home = () => {
         <div className="header">
           <img src={banner} className="iconImage" alt="" />
           <span className="buttonLogin">
-            <Button type="primary" icon={<LoginOutlined />}>
+            <Button
+              type="primary"
+              icon={<LoginOutlined />}
+              onClick={() => {
+                setIsLoginModalVisible(true);
+              }}
+            >
               <strong> Iniciar Sesión</strong>
             </Button>
           </span>
@@ -144,7 +157,7 @@ const Home = () => {
                     shape="round"
                     icon={<UserAddOutlined />}
                     onClick={() => {
-                      setIsModalVisible(true);
+                      setIsRegisterModalVisible(true);
                     }}
                   >
                     <strong> Registrarme</strong>
@@ -155,35 +168,14 @@ const Home = () => {
           </Row>
         </div>
       </div>
-      <Modal
-        title="Registro de usuario en CourseSpace"
-        visible={isModalVisible}
-        onOk={() => {}}
-        onCancel={() => {
-          setIsModalVisible(false);
-        }}
-      >
-        <Space direction="vertical">
-          <strong>Selecciona tu entidad</strong>
-          <Select
-            defaultValue="uean"
-            style={{ width: 120 }}
-            onChange={() => {}}
-          >
-            <Option value="uean">Universidad EAN</Option>
-            <Option value="school">Colegio</Option>
-            <Option value="disabled">Disabled</Option>
-            <Option value="Yiminghe">yiminghe</Option>
-          </Select>
-        </Space>
-
-        <Steps>
-          <Step status="finish" title="Entidad" icon={<HomeOutlined />} />
-          <Step status="finish" title="Información" icon={<IdcardOutlined />} />
-          <Step status="process" title="Pay" icon={<LoadingOutlined />} />
-          <Step status="wait" title="Finalizar" icon={<SaveOutlined />} />
-        </Steps>
-      </Modal>
+      <Register
+        isModalVisible={isRegisterModalVisible}
+        setIsModalVisible={setIsRegisterModalVisible}
+      />
+      <Login
+        isModalVisible={isLoginModalVisible}
+        setIsModalVisible={setIsLoginModalVisible}
+      />
     </Fragment>
   );
 };

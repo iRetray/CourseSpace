@@ -1,5 +1,6 @@
+/* eslint-disable no-restricted-globals */
 var CACHE_NAME = "pwa-task-manager";
-var urlsToCache = ["/", "/home"];
+var urlsToCache = ["/", "/home", "/dashboard"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

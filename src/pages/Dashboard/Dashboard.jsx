@@ -1,10 +1,24 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Typography } from "antd";
+import { Button, Typography, Layout, Menu, Breadcrumb } from "antd";
+import {
+  UserOutlined,
+  LaptopOutlined,
+  NotificationOutlined,
+  CalendarOutlined,
+  BookOutlined,
+  DiffOutlined,
+  AreaChartOutlined,
+  AppstoreOutlined,
+} from "@ant-design/icons";
 
 import AuthService from "../../services/AuthService";
 
+const banner =
+  "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
 const { Title } = Typography;
+const { SubMenu } = Menu;
+const { Header, Content, Sider } = Layout;
 
 const Dashboard = () => {
   const history = useHistory();
@@ -25,12 +39,60 @@ const Dashboard = () => {
   return (
     <Fragment>
       <div className="dashboardContainer">
-        <div className="closeSessionButton">
-          <Title level={3}>Bienvenido, {user ? user.name : null}</Title>
-          <Button block danger onClick={() => closeSession()}>
-            Cerrar Sesión
-          </Button>
-        </div>
+        <Layout>
+          <Header className="header">
+            <div className="logo">
+              <img src={banner} alt="" className="imageBanner" />
+            </div>
+          </Header>
+          <Layout>
+            <Sider
+              width={200}
+              className="site-layout-background"
+              breakpoint="lg"
+              collapsedWidth="0"
+            >
+              <Menu
+                mode="inline"
+                defaultSelectedKeys={["1"]}
+                style={{ height: "100%", borderRight: 0 }}
+              >
+                <Menu.Item icon={<UserOutlined />} key="1">
+                  Mi Perfil
+                </Menu.Item>
+                <Menu.Item icon={<CalendarOutlined />} key="2">
+                  Horario
+                </Menu.Item>
+                <SubMenu key="sub1" icon={<BookOutlined />} title="Asignaturas">
+                  <Menu.Item key="3" icon={<AppstoreOutlined />}>
+                    Administrar
+                  </Menu.Item>
+                  <Menu.Item key="4" icon={<DiffOutlined />}>
+                    Registrar
+                  </Menu.Item>
+                </SubMenu>
+                <Menu.Item icon={<AreaChartOutlined />}>Resultados</Menu.Item>
+              </Menu>
+            </Sider>
+            <Layout style={{ padding: "0 24px 24px" }}>
+              <Breadcrumb style={{ margin: "16px 0" }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+              <Content
+                className="site-layout-background"
+                style={{
+                  padding: 24,
+                  margin: 0,
+                  minHeight: 280,
+                }}
+              >
+                Contenido
+              </Content>
+            </Layout>
+          </Layout>
+        </Layout>
       </div>
     </Fragment>
   );

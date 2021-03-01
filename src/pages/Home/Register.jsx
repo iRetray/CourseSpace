@@ -25,6 +25,8 @@ import {
   NumberOutlined,
   CloseCircleOutlined,
   KeyOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
 } from "@ant-design/icons";
 
 import AuthService from "../../services/AuthService";
@@ -42,9 +44,37 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
   const [step, setStep] = useState("corporate");
 
   const saveDataUser = () => {
-    AuthService.saveNewUser(name, corporate, mail, user, password);
-    setIsModalVisible(false);
-    message.success("Te has registrado correctamente");
+    const response = AuthService.saveNewUser(
+      name,
+      corporate,
+      mail,
+      user,
+      password
+    );
+    switch (response) {
+      case "SUCCESS":
+        setIsModalVisible(false);
+        message.success("Te has registrado correctamente");
+        cleanForm();
+        break;
+      case "USER_REPEATED":
+        message.error("El usuario ingresado ya está registrado");
+        break;
+      case "MAIL_REPEATED":
+        message.error("El correo ingresado ya está registrado");
+        break;
+      default:
+        break;
+    }
+  };
+
+  const cleanForm = () => {
+    setCorporate("Universidad EAN");
+    setName("");
+    setMail("");
+    setUser("");
+    setPassword("");
+    setStep("corporate");
   };
 
   return (
@@ -52,6 +82,8 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
       <Modal
         title="Registro de usuario en CourseSpace"
         visible={isModalVisible}
+        centered
+        onCancel={() => setIsModalVisible(false)}
         footer={[
           <Button
             icon={<CloseCircleOutlined />}
@@ -117,6 +149,7 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
                     onChange={(e) => {
                       setCorporate(e);
                     }}
+                    value={corporate}
                   >
                     <Option value="Universidad EAN">Universidad EAN</Option>
                     <Option value="Universidad El Bosque">
@@ -150,6 +183,7 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
+                  value={name}
                 ></Input>
                 <Input
                   placeholder="Correo electrónico"
@@ -157,6 +191,7 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
                   onChange={(e) => {
                     setMail(e.target.value);
                   }}
+                  value={mail}
                 ></Input>
                 <Input
                   placeholder="Nombre de usuario"
@@ -164,15 +199,20 @@ const Register = ({ isModalVisible, setIsModalVisible }) => {
                   onChange={(e) => {
                     setUser(e.target.value);
                   }}
+                  value={user}
                 ></Input>
-                <Input
+                <Input.Password
                   type="password"
                   placeholder="Contraseña"
                   prefix={<KeyOutlined />}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
-                ></Input>
+                  value={password}
+                  iconRender={(visible) =>
+                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                  }
+                ></Input.Password>
 
                 <Space>
                   <Button

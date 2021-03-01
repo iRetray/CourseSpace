@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Row, Col, Card } from "antd";
 import {
   LoginOutlined,
@@ -11,18 +12,27 @@ import { Typography, Divider } from "antd";
 
 import Register from "./Register";
 import Login from "./Login";
-
-import banner from "../../assets/banner.png";
+import AuthService from "../../services/AuthService";
 
 const { Title, Paragraph, Text } = Typography;
 
+const banner =
+  "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/bannerHeader.png?alt=media&token=7a5e4773-5122-4079-842d-32932ae71de1";
 const landingImage =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/landingImage.png?alt=media&token=ce07560b-b124-4275-a076-4fbfed1c0472";
 
 const Home = () => {
+  const history = useHistory();
   const [information, setInformation] = useState(null);
   const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false);
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
+
+  useEffect(() => {
+    const userLogged = AuthService.getLoggedUser();
+    if (userLogged) {
+      history.push("/dashboard");
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -30,7 +40,13 @@ const Home = () => {
         <div className="header">
           <img src={banner} className="iconImage" alt="" />
           <span className="buttonLogin">
-            <Button type="primary" icon={<LoginOutlined />}>
+            <Button
+              type="primary"
+              icon={<LoginOutlined />}
+              onClick={() => {
+                setIsLoginModalVisible(true);
+              }}
+            >
               <strong> Iniciar Sesión</strong>
             </Button>
           </span>
@@ -156,7 +172,10 @@ const Home = () => {
         isModalVisible={isRegisterModalVisible}
         setIsModalVisible={setIsRegisterModalVisible}
       />
-      <Login />
+      <Login
+        isModalVisible={isLoginModalVisible}
+        setIsModalVisible={setIsLoginModalVisible}
+      />
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Typography, Layout, Menu, Breadcrumb } from "antd";
+import { Button, Typography, Layout, Menu, Breadcrumb, PageHeader } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -10,9 +10,13 @@ import {
   DiffOutlined,
   AreaChartOutlined,
   AppstoreOutlined,
+  SettingOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 
 import AuthService from "../../services/AuthService";
+
+import ProfilePage from "./ProfilePage";
 
 const banner =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
@@ -23,6 +27,7 @@ const { Header, Content, Sider } = Layout;
 const Dashboard = () => {
   const history = useHistory();
   const [user, setUser] = useState(null);
+  const [page, setPage] = useState("profile");
 
   useEffect(() => {
     const userLogged = AuthService.getLoggedUser();
@@ -41,9 +46,18 @@ const Dashboard = () => {
       <div className="dashboardContainer">
         <Layout>
           <Header className="header">
-            <div className="logo">
-              <img src={banner} alt="" className="imageBanner" />
-            </div>
+            <img src={banner} alt="" className="imageBanner" />
+            <Button
+              type="primary"
+              danger
+              className="iconSettings"
+              onClick={() => {
+                closeSession();
+              }}
+            >
+              <LogoutOutlined />
+              Cerrar sesión
+            </Button>
           </Header>
           <Layout>
             <Sider
@@ -75,21 +89,7 @@ const Dashboard = () => {
               </Menu>
             </Sider>
             <Layout style={{ padding: "0 24px 24px" }}>
-              <Breadcrumb style={{ margin: "16px 0" }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
-              <Content
-                className="site-layout-background"
-                style={{
-                  padding: 24,
-                  margin: 0,
-                  minHeight: 280,
-                }}
-              >
-                Contenido
-              </Content>
+              {page === "profile" && <ProfilePage user={user} />}
             </Layout>
           </Layout>
         </Layout>

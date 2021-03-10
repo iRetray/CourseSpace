@@ -1,10 +1,30 @@
 @import "./Variables";
 
 .dashboardContainer {
-  .closeSessionButton {
-    padding: 20px;
+  .header {
+    .spaceHeader {
+      vertical-align: top;
+    }
+    .imageBanner {
+      max-width: 280px;
+    }
+    .iconSettings {
+      margin-top: 15px;
+      float: right;
+      cursor: pointer;
+    }
   }
-  .imageBanner {
-    max-width: 200px;
+}
+.site-page-header {
+  border: 1px solid rgb(235, 237, 240);
+}
+
+.ant-page-header-ghost {
+  background-color: white;
+}
+
+.profileContainer {
+  .cardSpaceProfile {
+    width: fit-content;
   }
 }

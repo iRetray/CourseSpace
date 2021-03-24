@@ -15,12 +15,18 @@
     }
   }
 }
+
 .site-page-header {
   border: 1px solid rgb(235, 237, 240);
 }
 
 .ant-page-header-ghost {
   background-color: white;
+}
+
+.center{
+  display: block;
+    text-align: -webkit-center;
 }
 
 .profileContainer {

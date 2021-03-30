@@ -17,6 +17,7 @@ import {
 import AuthService from "../../services/AuthService";
 
 import ProfilePage from "./ProfilePage";
+import ResultsPage from "./ResultsPage";
 
 const banner =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
@@ -71,7 +72,11 @@ const Dashboard = () => {
                 defaultSelectedKeys={["1"]}
                 style={{ height: "100%", borderRight: 0 }}
               >
-                <Menu.Item icon={<UserOutlined />} key="1">
+                <Menu.Item
+                  icon={<UserOutlined />}
+                  key="1"
+                  onClick={() => setPage("profile")}
+                >
                   Mi Perfil
                 </Menu.Item>
                 <Menu.Item icon={<CalendarOutlined />} key="2">
@@ -85,11 +90,17 @@ const Dashboard = () => {
                     Registrar
                   </Menu.Item>
                 </SubMenu>
-                <Menu.Item icon={<AreaChartOutlined />}>Resultados</Menu.Item>
+                <Menu.Item
+                  icon={<AreaChartOutlined />}
+                  onClick={() => setPage("results")}
+                >
+                  Resultados
+                </Menu.Item>
               </Menu>
             </Sider>
             <Layout style={{ padding: "0 24px 24px" }}>
               {page === "profile" && <ProfilePage user={user} />}
+              {page === "results" && <ResultsPage user={user} />}
             </Layout>
           </Layout>
         </Layout>

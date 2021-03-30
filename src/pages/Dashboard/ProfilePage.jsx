@@ -26,7 +26,7 @@ const ProfilePage = ({ user }) => {
       <div className="profileContainer">
         <PageHeader
           style={{ backgroundColor: "white", marginTop: "20px" }}
-          title="Dashboard"
+          title="Mi Perfil"
           subTitle="Información general"
         />
         <Content
@@ -44,7 +44,7 @@ const ProfilePage = ({ user }) => {
                   <Space direction="horizontal">
                     <img src={eanLogo} alt="" style={{ maxWidth: "120px" }} />
                     <Paragraph>
-                      <Title level={2}>Ingenieria Ambiental</Title>
+                      <Title level={2}>Ingenieria de Sistemas</Title>
                       <Title level={5}>Semestre 4</Title>
                       87 creditos aprobados
                     </Paragraph>

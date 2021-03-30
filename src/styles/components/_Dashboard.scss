@@ -24,14 +24,14 @@
   background-color: white;
 }
 
-.center{
+.center {
   display: block;
-    text-align: -webkit-center;
+  text-align: -webkit-center;
 }
 
 .profileContainer {
   .cardSpaceProfile {
-    width: fit-content;
+    //width: fit-content;
   }
   .numberGraph {
     font-weight: 800;
@@ -41,5 +41,13 @@
     font-size: 15px;
     font-weight: 100;
     display: inline-block;
+  }
+  .bannerContainer {
+    position: relative;
+    .bannerEAN {
+      max-width: -webkit-fill-available;
+      padding: 20px;
+      cursor: pointer;
+    }
   }
 }

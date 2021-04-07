@@ -1,16 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Typography, Layout, Menu, Breadcrumb, PageHeader } from "antd";
+import { Button, Layout, Menu } from "antd";
 import {
   UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
   CalendarOutlined,
   BookOutlined,
   DiffOutlined,
   AreaChartOutlined,
   AppstoreOutlined,
-  SettingOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 
@@ -18,12 +15,12 @@ import AuthService from "../../services/AuthService";
 
 import ProfilePage from "./ProfilePage";
 import ResultsPage from "./ResultsPage";
+import RegisterCourses from "./RegisterCourses";
 
 const banner =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
-const { Title } = Typography;
 const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Sider } = Layout;
 
 const Dashboard = () => {
   const history = useHistory();
@@ -86,7 +83,11 @@ const Dashboard = () => {
                   <Menu.Item key="3" icon={<AppstoreOutlined />}>
                     Administrar
                   </Menu.Item>
-                  <Menu.Item key="4" icon={<DiffOutlined />}>
+                  <Menu.Item
+                    key="4"
+                    icon={<DiffOutlined />}
+                    onClick={() => setPage("registerCourses")}
+                  >
                     Registrar
                   </Menu.Item>
                 </SubMenu>
@@ -101,6 +102,7 @@ const Dashboard = () => {
             <Layout style={{ padding: "0 24px 24px" }}>
               {page === "profile" && <ProfilePage user={user} />}
               {page === "results" && <ResultsPage user={user} />}
+              {page === "registerCourses" && <RegisterCourses user={user} />}
             </Layout>
           </Layout>
         </Layout>

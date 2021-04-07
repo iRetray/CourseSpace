@@ -10,7 +10,6 @@ import {
   Typography,
   Row,
   Col,
-  DemoBox,
 } from "antd";
 import { SmileTwoTone } from "@ant-design/icons";
 
@@ -18,7 +17,7 @@ import eanLogo from "../../assets/ean.jpg";
 import bannerEANX from "../../assets/EANX.png";
 
 const { Title, Text, Paragraph, Link } = Typography;
-const { Header, Content, Sider } = Layout;
+const { Content } = Layout;
 
 const ProfilePage = ({ user }) => {
   return (

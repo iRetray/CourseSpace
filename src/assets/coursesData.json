@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Desarrollo de aplicaciones web",
+    "description": "Crea potentes aplicaciones profesionales que se ejecutan en navegadores de distintos dispositivos, sin necesidad de plugins y con una gran Experiencia de Uso.",
+    "numberOfCredits": 6,
+    "avaliableTeachers": ["Ramiro Eduardo Espinoza", "Martiza Peña Salas"],
+    "avaliableGroups": [
+      {
+        "groupCode": "01",
+        "teacher": "Ramiro Eduardo Espinoza",
+        "scheduleStart": 946728000000,
+        "scheduleEnd": 946735200000
+      },
+      {
+        "groupCode": "02",
+        "teacher": "Martiza Peña Salas",
+        "scheduleStart": 946767600000,
+        "scheduleEnd": 946774800000
+      }
+    ]
+  }
+]

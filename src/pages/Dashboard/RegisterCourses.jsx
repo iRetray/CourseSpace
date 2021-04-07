@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
-import { PageHeader, Layout } from "antd";
+import { PageHeader, Layout, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+
 const { Content } = Layout;
+const { Search } = Input;
 
 const RegisterCourses = () => {
+  const onSearch = (value) => console.log(value);
   return (
     <Fragment>
-      <div className="profileContainer">
+      <div className="registerCoursesContainer">
         <PageHeader
           style={{ backgroundColor: "white", marginTop: "20px" }}
           title="Registrar cursos"
@@ -19,7 +23,20 @@ const RegisterCourses = () => {
             minHeight: 280,
           }}
         >
-          Formulario de registrar cursos
+          <center>
+            <Search
+              placeholder="Busqueda de cursos"
+              allowClear
+              onSearch={onSearch}
+              enterButton={
+                <div>
+                  <SearchOutlined /> <strong>Buscar</strong>
+                </div>
+              }
+              size="middle"
+              className="inputSearch"
+            />
+          </center>
         </Content>
       </div>
     </Fragment>

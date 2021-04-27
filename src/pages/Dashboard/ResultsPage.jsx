@@ -19,7 +19,7 @@ import {
   BarChartOutlined,
 } from "@ant-design/icons";
 
-import CourseComponent from "./CourseComponent";
+import CourseComponent from "../../components/CourseComponent";
 
 import eanLogo from "../../assets/ean.jpg";
 

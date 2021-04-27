@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Cálculo vectorial",
+    "credits": 6,
+    "image": "https://sites.google.com/site/angelopex/_/rsrc/1472870650294/home/-que-es-el-calculo-vectorial/vec.png",
+    "faculty": "Facultad de ingeniería",
+    "color": "#096dd9",
+    "isBiannual": true,
+    "groupsAvaliable": [
+      {
+        "id": 1,
+        "teacher": "Manuel Poveda",
+        "startHour": "7:00 AM",
+        "endHour": "9:00 AM"
+      },
+      {
+        "id": 2,
+        "teacher": "Juan Pablo Rueda",
+        "startHour": "6:00 PM",
+        "endHour": "8:00 PM"
+      },
+      {
+        "id": 3,
+        "teacher": "Armando Banquito",
+        "startHour": "11:00 AM",
+        "endHour": "1:00 PM"
+      }
+    ],
+    "description": "Un vector es la representación matemática y gráfica de una magnitud vectorial. Consiste básicamente en una flecha o segmento rectilíneo orientado, es decir, con una determinada longitud, dirección y sentido."
+  },
+  {
+    "id": 2,
+    "name": "Metodología de la investigación",
+    "credits": 3,
+    "image": "https://www.questionpro.com/blog/wp-content/uploads/2018/08/modelos-de-investigacion-768x512.jpg",
+    "faculty": "Cursos transversales",
+    "color": "#cf1322",
+    "isBiannual": false,
+    "groupsAvaliable": [
+      {
+        "id": 1,
+        "teacher": "Manuel Poveda",
+        "startHour": "7:00 AM",
+        "endHour": "9:00 AM"
+      },
+      {
+        "id": 2,
+        "teacher": "Juan Pablo Rueda",
+        "startHour": "6:00 PM",
+        "endHour": "8:00 PM"
+      },
+      {
+        "id": 3,
+        "teacher": "Armando Banquito",
+        "startHour": "11:00 AM",
+        "endHour": "1:00 PM"
+      }
+    ],
+    "description": "En su definición pura, la metodología de investigación es el conjunto coherente y racional de procedimientos y técnicas que se aplican de manera ordenada y sistemática en la realización de un estudio."
+  },
+  {
+    "id": 3,
+    "name": "Mecánica de fluidos",
+    "credits": 6,
+    "image": "https://www.eadic.com/wp-content/uploads/2017/02/tuberias.jpg",
+    "faculty": "Facultad de ingeniería",
+    "color": "#096dd9",
+    "isBiannual": true,
+    "groupsAvaliable": [
+      {
+        "id": 1,
+        "teacher": "Manuel Poveda",
+        "startHour": "7:00 AM",
+        "endHour": "9:00 AM"
+      },
+      {
+        "id": 2,
+        "teacher": "Juan Pablo Rueda",
+        "startHour": "6:00 PM",
+        "endHour": "8:00 PM"
+      },
+      {
+        "id": 3,
+        "teacher": "Armando Banquito",
+        "startHour": "11:00 AM",
+        "endHour": "1:00 PM"
+      }
+    ],
+    "description": "La mecánica de fluidos es la rama de la física comprendida dentro de la mecánica de medios continuos que estudia el movimiento de los fluidos, así como las fuerzas que lo provocan.​"
+  }
+]

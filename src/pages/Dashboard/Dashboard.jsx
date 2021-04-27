@@ -18,6 +18,7 @@ import AuthService from "../../services/AuthService";
 
 import ProfilePage from "./ProfilePage";
 import ResultsPage from "./ResultsPage";
+import RegisterPage from "./RegisterPage";
 
 const banner =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
@@ -86,7 +87,11 @@ const Dashboard = () => {
                   <Menu.Item key="3" icon={<AppstoreOutlined />}>
                     Administrar
                   </Menu.Item>
-                  <Menu.Item key="4" icon={<DiffOutlined />}>
+                  <Menu.Item
+                    key="4"
+                    icon={<DiffOutlined />}
+                    onClick={() => setPage("register")}
+                  >
                     Registrar
                   </Menu.Item>
                 </SubMenu>
@@ -100,6 +105,7 @@ const Dashboard = () => {
             </Sider>
             <Layout style={{ padding: "0 24px 24px" }}>
               {page === "profile" && <ProfilePage user={user} />}
+              {page === "register" && <RegisterPage user={user} />}
               {page === "results" && <ResultsPage user={user} />}
             </Layout>
           </Layout>

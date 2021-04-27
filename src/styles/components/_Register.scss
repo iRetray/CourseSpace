@@ -1,0 +1,15 @@
+.RegisterContainer {
+  .resultsSection {
+    display: flex;
+    flex-flow: wrap;
+    padding: 20px;
+    gap: 20px;
+  }
+  .searchBox {
+    max-width: 600px;
+  }
+}
+
+.CourseToRegisterContainer {
+  max-width: 350px;
+}

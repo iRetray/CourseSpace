@@ -19,6 +19,7 @@ import AuthService from "../../services/AuthService";
 import ProfilePage from "./ProfilePage";
 import ResultsPage from "./ResultsPage";
 import RegisterPage from "./RegisterPage";
+import SchedulePage from "./SchedulePage.jsx";
 
 const banner =
   "https://firebasestorage.googleapis.com/v0/b/coursespace-886d2.appspot.com/o/banerWhite.png?alt=media&token=fad949b4-5916-41d1-8fe2-10ce8b569af8";
@@ -80,13 +81,14 @@ const Dashboard = () => {
                 >
                   Mi Perfil
                 </Menu.Item>
-                <Menu.Item icon={<CalendarOutlined />} key="2">
+                <Menu.Item
+                  icon={<CalendarOutlined />}
+                  key="2"
+                  onClick={() => setPage("schedule")}
+                >
                   Horario
                 </Menu.Item>
                 <SubMenu key="sub1" icon={<BookOutlined />} title="Asignaturas">
-                  <Menu.Item key="3" icon={<AppstoreOutlined />}>
-                    Administrar
-                  </Menu.Item>
                   <Menu.Item
                     key="4"
                     icon={<DiffOutlined />}
@@ -107,6 +109,7 @@ const Dashboard = () => {
               {page === "profile" && <ProfilePage user={user} />}
               {page === "register" && <RegisterPage user={user} />}
               {page === "results" && <ResultsPage user={user} />}
+              {page === "schedule" && <SchedulePage user={user} />}
             </Layout>
           </Layout>
         </Layout>
